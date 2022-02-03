@@ -67,7 +67,7 @@ class App extends React.Component {
     return (
       <div>
         高阶组件
-        <MousePosition name="Tom"></MousePosition>
+        <MousePosition></MousePosition>
         <MouseCat></MouseCat>
       </div>
     );

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import cat from "./img/cat.png";
 
-function withMouse(WrappedComponent) {
+function withMouse(WrapperComponent) {
   class Mouse extends React.Component {
     state = {
       x: 0,
@@ -26,19 +26,11 @@ function withMouse(WrappedComponent) {
     }
   
     render() {
-      // 把props也传递给被包裹组件
-      return <WrappedComponent {...this.state} {...this.props}></WrappedComponent>;
+      return <WrapperComponent {...this.state}></WrapperComponent>;
     }
   }
 
-  // 设置displayName
-  Mouse.displayName = `WithMouse${getDisplayName(WrappedComponent)}`
-
   return Mouse;
-}
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 
 const Position = props => (
@@ -67,7 +59,7 @@ class App extends React.Component {
     return (
       <div>
         高阶组件
-        <MousePosition name="Tom"></MousePosition>
+        <MousePosition></MousePosition>
         <MouseCat></MouseCat>
       </div>
     );
