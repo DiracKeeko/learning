@@ -4,6 +4,8 @@ const { exec } = require("child_process");
 // child_process.exec(command[, options][, callback])
 // http://nodejs.cn/api/child_process.html#child_processexeccommand-options-callback
 
+// exec会将子进程执行的结果缓存起来，之后将缓存的结果返回给回调函数
+
 // ↓ 省略了options参数，只有command和callback
 exec("cat a.js", (error, stdout, stderr) => {
   // error -> 创建子进程报错(如 cat a.js 不存在a.js)，返回error
