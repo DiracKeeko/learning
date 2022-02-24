@@ -10,7 +10,7 @@ class HomeController extends Controller {
 
   async demo() {
     const { ctx } = this;
-    ctx.body = "demo page";
+    ctx.body = 'demo page';
   }
 }
 

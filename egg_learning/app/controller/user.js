@@ -5,16 +5,16 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
   async index() {
     const { ctx } = this;
-    ctx.body = "user index";
+    ctx.body = 'user index';
   }
 
   async lists() {
     const { ctx } = this;
-    await new Promise((resolve) => {
+    await new Promise(resolve => {
       setTimeout(() => {
-        resolve()
+        resolve();
       }, 1000);
-    })
+    });
 
     ctx.body = [{ id: 123 }];
   }
