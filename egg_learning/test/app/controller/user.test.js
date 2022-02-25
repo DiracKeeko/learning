@@ -18,4 +18,18 @@ describe('user test', () => {
       .expect(200)
       .expect('[{"id":123}]');
   });
+
+  it('/user/detail test', async () => {
+    await app.httpRequest()
+      .get('/user/detail?id=2')
+      .expect(200)
+      .expect('2');
+  });
+
+  it('/user/detail2/:id test', async () => {
+    await app.httpRequest()
+      .get('/user/detail2/3')
+      .expect(200)
+      .expect('3');
+  });
 });

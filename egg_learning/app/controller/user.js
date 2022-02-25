@@ -18,6 +18,19 @@ class UserController extends Controller {
 
     ctx.body = [{ id: 123 }];
   }
+
+  async detail() {
+    const { ctx } = this;
+    // console.log("ctx.query->", ctx.query); // 如 {id: 100}
+    ctx.body = ctx.query.id;
+  }
+
+  async detail2() {
+    const { ctx } = this;
+    // console.log("ctx.params->", ctx.params); // 如 {id: 200}
+    ctx.body = ctx.params.id;
+  }
+
 }
 
 module.exports = UserController;
