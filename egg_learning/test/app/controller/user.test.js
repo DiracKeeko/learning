@@ -32,4 +32,19 @@ describe('user test', () => {
       .expect(200)
       .expect('3');
   });
+
+  it('/user/add test', async () => {
+    await app.httpRequest()
+      .post('/user/add')
+      .send({ name: 'John', age: 18 })
+      .expect(200)
+      .expect({
+        code: 0,
+        data: {
+          name: 'John',
+          age: 18,
+        },
+        msg: '',
+      });
+  });
 });
