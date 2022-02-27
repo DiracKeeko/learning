@@ -44,6 +44,26 @@ class UserController extends Controller {
     };
   }
 
+  // ↓ edit方法使用put请求，put的参数与post类似
+  async edit() {
+    const { ctx } = this;
+    ctx.body = {
+      code: 0,
+      data: ctx.request.body,
+      msg: ''
+    };
+  }
+
+  // ↓ delete方法使用delete请求，delete的参数与post类似
+  async del() {
+    const { ctx } = this;
+    ctx.body = {
+      code: 0,
+      data: ctx.request.body,
+      msg: ''
+    };
+  }
+
 }
 
 module.exports = UserController;
