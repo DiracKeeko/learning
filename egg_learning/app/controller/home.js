@@ -5,6 +5,9 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     const { ctx } = this;
+    // ↓ 其他controller无需引入，也可以调用user service
+    const res = await ctx.service.user.detail(20);
+    console.log("res in home->", res);
     ctx.body = 'egg - hello world!';
   }
 

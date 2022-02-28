@@ -23,6 +23,8 @@ class UserController extends Controller {
     const { ctx } = this;
     // console.log("ctx.query->", ctx.query); // 如 {id: 100}
     // query ↓ 对应query型 /user?id=2
+    const res = await ctx.service.user.detail(10);
+    console.log(res);
     ctx.body = ctx.query.id;
   }
 
