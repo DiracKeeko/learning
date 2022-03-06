@@ -14,4 +14,6 @@ module.exports = app => {
   router.post('/user/add', controller.user.add);
   router.put('/user/edit', controller.user.edit);
   router.del('/user/del', controller.user.del);
+  router.get('/curl/get', controller.curl.curlGet);
+  router.post('/curl/post', controller.curl.curlPost);
 };
