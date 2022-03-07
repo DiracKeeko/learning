@@ -16,7 +16,12 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1645458417257_5743';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ["httpLog"];
+
+  // ↓ 配置 httpLog middleware options
+  config.httpLog = {
+    type: "test"
+  }
 
   config.security = {
     csrf: {
