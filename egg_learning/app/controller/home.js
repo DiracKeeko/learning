@@ -11,6 +11,13 @@ class HomeController extends Controller {
     // ctx.body = 'egg - hello world!';
     ctx.body = res; // return an object
   }
+  
+  async newApplication() {
+    const { ctx, app } = this;
+    const packageInfo = app.package("scripts");
+    console.log("package->", packageInfo);
+    ctx.body = "newApp";
+  }
 
   async demo() {
     const { ctx } = this;
