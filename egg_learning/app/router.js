@@ -1,20 +1,21 @@
-'use strict';
+"use strict";
 
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = app => {
+module.exports = (app) => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
+  router.get("/", controller.home.index);
   router.get("/newApplication", controller.home.newApplication);
-  router.get('/demo', controller.home.demo);
-  router.get('/user', controller.user.index);
-  router.get('/user/lists', controller.user.lists);
-  router.get('/user/detail', controller.user.detail);
-  router.get('/user/detail2/:id', controller.user.detail2);
-  router.post('/user/add', controller.user.add);
-  router.put('/user/edit', controller.user.edit);
-  router.del('/user/del', controller.user.del);
-  router.get('/curl/get', controller.curl.curlGet);
-  router.get('/curl/post', controller.curl.curlPost);
+  router.get("/newContext", controller.home.newContext);
+  router.get("/demo", controller.home.demo);
+  router.get("/user", controller.user.index);
+  router.get("/user/lists", controller.user.lists);
+  router.get("/user/detail", controller.user.detail);
+  router.get("/user/detail2/:id", controller.user.detail2);
+  router.post("/user/add", controller.user.add);
+  router.put("/user/edit", controller.user.edit);
+  router.del("/user/del", controller.user.del);
+  router.get("/curl/get", controller.curl.curlGet);
+  router.get("/curl/post", controller.curl.curlPost);
 };

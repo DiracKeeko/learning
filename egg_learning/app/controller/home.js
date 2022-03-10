@@ -14,9 +14,18 @@ class HomeController extends Controller {
   
   async newApplication() {
     const { ctx, app } = this;
-    const packageInfo = app.package("scripts");
-    console.log("package->", packageInfo);
+    // const packageInfo = app.package("scripts");
+    // console.log("package->", packageInfo);
+    const allPack = app.allPackage;
+    console.log("allPack->", allPack);
     ctx.body = "newApp";
+  }
+
+  async newContext() {
+    const { ctx } = this;
+    const params = ctx.getParams("id");
+    console.log("params->", params);
+    ctx.body = "newContext";
   }
 
   async demo() {

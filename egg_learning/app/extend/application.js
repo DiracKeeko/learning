@@ -6,6 +6,11 @@ module.exports = {
   package(key) {
     const pack = getPack();
     return key ? pack[key] : pack;
+  },
+
+  // 属性扩展
+  get allPackage() {
+    return getPack();
   }
 }
 
