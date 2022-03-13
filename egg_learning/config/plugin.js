@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 /** @type Egg.EggPlugin */
 module.exports = {
   // had enabled by egg
@@ -7,3 +9,10 @@ module.exports = {
   //   enable: true,
   // }
 };
+
+exports.auth = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-auth')
+  // package: "xxx", // package指向第三方包名, path指向插件, 
+  // package属性和path属性互斥
+}
