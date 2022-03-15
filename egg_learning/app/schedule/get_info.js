@@ -4,7 +4,7 @@ class getInfo extends Subscription {
   static get schedule() {
     return {
       // interval: 3000, // 单位ms
-      cron: "*/3 * * * * *", // 这里的*/3 等价于上面的interval: 3000
+      cron: "*/30 * * * * *", // 这里的*/3 等价于上面的interval: 3000
       // ↑  s min h d m w // 目前只支持6个参数
       type: "worker", // "all" / "worker"  
       // "all"->所有的worker都执行这个定时任务

@@ -11,8 +11,13 @@ module.exports = {
 };
 
 exports.auth = {
-  enable: true,
+  enable: false,
   path: path.join(__dirname, '../lib/plugin/egg-auth')
   // package: "xxx", // package指向第三方包名, path指向插件, 
   // package属性和path属性互斥
+}
+
+exports.mysql = {
+  enable: true,
+  package: "egg-mysql"
 }

@@ -28,6 +28,19 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+
+  config.mysql = {
+    app: true, // 是否将mysql挂载到app下  true (默认)
+    agent: false, // 是否挂载到代理下面 false (默认)
+    client: {
+      host: "127.0.0.1",
+      port: "3306",
+      user: "root",
+      password: "root",
+      database: "egg"
+    }
+  }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
