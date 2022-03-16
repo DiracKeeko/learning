@@ -3,12 +3,12 @@
 const path = require('path');
 
 /** @type Egg.EggPlugin */
-module.exports = {
+// module.exports = {
   // had enabled by egg
   // static: {
   //   enable: true,
   // }
-};
+// };
 
 exports.auth = {
   enable: false,
