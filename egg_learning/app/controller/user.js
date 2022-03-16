@@ -5,7 +5,16 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
   async index() {
     const { ctx } = this;
-    ctx.body = 'user index';
+    // ctx.body = 'user index';
+
+    // ↓ render app/view/ 目录下面的文件
+    await ctx.render("user.html", {
+      id: 100,
+      name: "admin",
+      lists: [ 'js', 'ts', 'php' ]
+    }, {
+      delimiter: "%" // 指定这个文件渲染的定界符
+    }); 
   }
 
   async lists() {

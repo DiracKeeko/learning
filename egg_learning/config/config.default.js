@@ -29,6 +29,16 @@ module.exports = appInfo => {
     },
   };
 
+  config.view = {
+    mapping: {
+      ".html": "ejs" // 以.html结尾的文件用ejs模板引擎渲染
+    }
+  };
+  config.ejs = {
+    // delimiter: "$" // 定界符<$= id $>, 这里修改是修改全局的定界符
+    delimiter: "%"
+  };
+
   config.mysql = {
     app: true, // 是否将mysql挂载到app下  true (默认)
     agent: false, // 是否挂载到代理下面 false (默认)

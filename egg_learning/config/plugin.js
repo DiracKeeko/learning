@@ -10,6 +10,11 @@ const path = require('path');
   // }
 // };
 
+exports.ejs = {
+  enable: true,
+  package: 'egg-view-ejs'
+};
+
 exports.auth = {
   enable: false,
   path: path.join(__dirname, '../lib/plugin/egg-auth')
