@@ -1,6 +1,7 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
+const path = require('path');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -32,7 +33,13 @@ module.exports = appInfo => {
   config.view = {
     mapping: {
       ".html": "ejs" // 以.html结尾的文件用ejs模板引擎渲染
-    }
+    },
+    root: path.join(appInfo.baseDir, "app/html"), // 配置模板引擎的根目录为app/html
+    // ↓ 模板多目录配置
+    // root: [
+    //   path.join(appInfo.baseDir, "app/html"),
+    //   path.join(appInfo.baseDir, "app/view")
+    // ].join(",")
   };
   config.ejs = {
     // delimiter: "$" // 定界符<$= id $>, 这里修改是修改全局的定界符
