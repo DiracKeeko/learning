@@ -46,6 +46,11 @@ module.exports = appInfo => {
     delimiter: "%"
   };
 
+  config.static = {
+    prefix: "/assets/", // 静态资源路径默认前缀
+    dir: path.join(appInfo.baseDir, "app/assets") // 静态资源放置路径
+  };
+
   config.mysql = {
     app: true, // 是否将mysql挂载到app下  true (默认)
     agent: false, // 是否挂载到代理下面 false (默认)

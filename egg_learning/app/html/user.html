@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<!-- 静态资源目录默认是app/public -->
+<!-- 访问路径 http://127.0.0.1:7001/public/css/user.css -->
+<!-- 在config.default.js中修改prefix, 修改静态资源目录 -->
 <body>
   user page
+  <!-- <% include user-header.html %> -->
   <br/>
   id: <%= id %>
   <br/>
