@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>user</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/user.css"/>
 </head>
 <!-- 静态资源目录默认是app/public -->
 <!-- 访问路径 http://127.0.0.1:7001/public/css/user.css -->
@@ -19,7 +20,7 @@
   <%# 注释%>
 
   <br/>
-  <ul>
+  <ul class="user">
     <%#↓函数语句不用加等号,表达式要加= %>
     <% for(let i = 0; i < lists.length; i++) { %>
       <li>
@@ -28,5 +29,8 @@
     <% } %>
   </ul>
   name: <%= name %>
+
+  <img src="assets/img/f1.jpg" />
+  <script src="assets/js/user.js"></script>
 </body>
 </html>

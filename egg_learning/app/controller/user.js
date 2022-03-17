@@ -48,12 +48,19 @@ class UserController extends Controller {
   async add() {
     const { ctx } = this;
 
-    // ctx.body = "add";
+
+    const rule = {
+      name: { type: 'string' },
+      age: { type: 'number' },
+    };
+    ctx.validate(rule);
+
     ctx.body = {
       code: 0,
       data: ctx.request.body,
       msg: '',
     };
+    // const res = await ctx.service.user.add(ctx.request.body);
   }
 
   // ↓ edit方法使用put请求，put的参数与post类似
