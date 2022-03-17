@@ -33,7 +33,10 @@ class UserController extends Controller {
   async login(){
     const { ctx } = this;
     const body = ctx.request.body;
-    ctx.cookies.set("user", JSON.stringify(body));
+    ctx.cookies.set("user", JSON.stringify(body), {
+      maxAge: 1000 * 60 * 10,
+      httpOnly: false, // httpOnly 默认为true
+    });
 
     ctx.body = {
       status: 200,
