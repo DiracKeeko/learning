@@ -1,27 +1,60 @@
-'use strict';
+"use strict";
 
-const Controller = require('egg').Controller;
+const Controller = require("egg").Controller;
 
 class UserController extends Controller {
+
+  encode(str = ''){
+    return new Buffer(str).toString("base64");
+  }
+  decode(str = ''){
+    return new Buffer(str, "base64").toString();
+  }
+
   async index() {
     const { ctx } = this;
 
-    const user = ctx.cookies.get('user');
+    // ctx.cookies.set("zh", "测试"); // 会报错, egg.js 无法设置中文cookie
+    
+    ctx.cookies.set("zh", "中文测试", {
+      encrypt: true
+    });
+
+    // const zhUnEncrypt = ctx.cookies.get("zh");
+    // console.log("zhUnEncrypt->", zhUnEncrypt); // undefined
+    // 加密过的cookie key 无法直接获取
+    // ↓ 需要在get时也配置encrypt
+    const zh = ctx.cookies.get("zh", {
+      encrypt: true
+    });
+    // console.log("zh->", zh) // 中文测试
+
+    ctx.cookies.set("base64", this.encode("中文base64"));
+    const base64 = this.decode(ctx.cookies.get("base64"));
+
+    const user = ctx.cookies.get("user");
+
     // ↓ render app/view/ 目录下面的文件
-    await ctx.render("user.html", {
-      id: 100,
-      name: "admin",
-      lists: [ 'js', 'ts', 'php' ],
-      user: user ? JSON.parse(user) : null,
-    }, {
-      delimiter: "%" // 指定这个文件渲染的定界符
-    }); 
+    await ctx.render(
+      "user.html",
+      {
+        id: 100,
+        name: "admin",
+        lists: ["js", "ts", "php"],
+        user: user ? JSON.parse(user) : null,
+        zh,
+        base64
+      },
+      {
+        delimiter: "%", // 指定这个文件渲染的定界符
+      }
+    );
   }
 
   async lists() {
     const { ctx, app } = this;
     console.log("mysql->", app.mysql);
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       setTimeout(() => {
         resolve();
       }, 1000);
@@ -30,7 +63,7 @@ class UserController extends Controller {
     ctx.body = [{ id: 123 }];
   }
 
-  async login(){
+  async login() {
     const { ctx } = this;
     const body = ctx.request.body;
     ctx.cookies.set("user", JSON.stringify(body), {
@@ -40,16 +73,16 @@ class UserController extends Controller {
 
     ctx.body = {
       status: 200,
-      data: body
+      data: body,
     };
   }
 
-  async logout(){
+  async logout() {
     const { ctx } = this;
     ctx.cookies.set("user", null);
 
     ctx.body = {
-      status: 200
+      status: 200,
     };
   }
 
@@ -72,17 +105,16 @@ class UserController extends Controller {
   async add() {
     const { ctx } = this;
 
-
     const rule = {
-      name: { type: 'string' },
-      age: { type: 'number' },
+      name: { type: "string" },
+      age: { type: "number" },
     };
     ctx.validate(rule);
 
     ctx.body = {
       code: 0,
       data: ctx.request.body,
-      msg: '',
+      msg: "",
     };
     // const res = await ctx.service.user.add(ctx.request.body);
   }
@@ -93,7 +125,7 @@ class UserController extends Controller {
     ctx.body = {
       code: 0,
       data: ctx.request.body,
-      msg: '',
+      msg: "",
     };
   }
 
@@ -103,10 +135,9 @@ class UserController extends Controller {
     ctx.body = {
       code: 0,
       data: ctx.request.body,
-      msg: '',
+      msg: "",
     };
   }
-
 }
 
 module.exports = UserController;

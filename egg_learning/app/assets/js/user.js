@@ -1,31 +1,28 @@
 // alert('user')
 
-function login(){
+function login() {
   fetch("/login", {
     method: "post",
     headers: {
-      "Content-type": "application/json"
+      "Content-type": "application/json",
     },
     body: JSON.stringify({
       name: "admin",
-      pwd: "admin"
-    })
-  })
-  .then(res=>{
-    location.reload()
+      pwd: "admin",
+    }),
+  }).then((res) => {
+    location.reload();
   });
 }
 
-function logout(){
+function logout() {
   fetch("/logout", {
     method: "post",
     headers: {
-      "Content-type": "application/json"
+      "Content-type": "application/json",
     },
-    body: JSON.stringify({
-    })
-  })
-  .then(res=>{
-    location.reload()
+    body: JSON.stringify({}),
+  }).then((res) => {
+    location.reload();
   });
 }
