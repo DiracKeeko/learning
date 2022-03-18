@@ -51,6 +51,13 @@ module.exports = appInfo => {
     dir: path.join(appInfo.baseDir, "app/assets") // 静态资源放置路径
   };
 
+  config.session = {
+    key: "KEEKO_SESS", // 设置session的key, 默认值是EGG_SESS
+    httpOnly: true,
+    maxAge: 1000 * 60, // 60秒过期
+    renew: true // 在过期时间到1/2 maxAge的时候如果再次访问，会重置maxAge
+  };
+
   config.mysql = {
     app: true, // 是否将mysql挂载到app下  true (默认)
     agent: false, // 是否挂载到代理下面 false (默认)

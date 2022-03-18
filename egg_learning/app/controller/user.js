@@ -14,8 +14,8 @@ class UserController extends Controller {
   async index() {
     const { ctx } = this;
 
+    // ***************cookie***************
     // ctx.cookies.set("zh", "测试"); // 会报错, egg.js 无法设置中文cookie
-    
     ctx.cookies.set("zh", "中文测试", {
       encrypt: true
     });
@@ -32,8 +32,16 @@ class UserController extends Controller {
     ctx.cookies.set("base64", this.encode("中文base64"));
     const base64 = this.decode(ctx.cookies.get("base64"));
 
-    const user = ctx.cookies.get("user");
+    
+    // ***************session***************
+    // 获取session
+    const session = ctx.session.user;
+    const zhSession = ctx.session.zh;
+    console.log("session->", session);
+    console.log("zhSession->", zhSession); // session直接支持中文
 
+
+    const user = ctx.cookies.get("user");
     // ↓ render app/view/ 目录下面的文件
     await ctx.render(
       "user.html",
@@ -71,6 +79,11 @@ class UserController extends Controller {
       httpOnly: false, // httpOnly 默认为true
     });
 
+    // 设置session, egg.js中已经封装了,操作起来比cookie简单
+    ctx.session.user = body;
+    ctx.session.zh = "中文测试";
+    ctx.session.test = "test";
+
     ctx.body = {
       status: 200,
       data: body,
@@ -79,7 +92,12 @@ class UserController extends Controller {
 
   async logout() {
     const { ctx } = this;
+    
+    // 清楚cookie
     ctx.cookies.set("user", null);
+
+    //清除session
+    ctx.session.user = null;
 
     ctx.body = {
       status: 200,
