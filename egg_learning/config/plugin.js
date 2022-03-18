@@ -26,10 +26,15 @@ exports.auth = {
   path: path.join(__dirname, '../lib/plugin/egg-auth')
   // package: "xxx", // package指向第三方包名, path指向插件, 
   // package属性和path属性互斥
-}
+};
 // auth还要在 root/app.js中有额外的配置 app.config.coreMiddleware.push('auth');
+
+exports.info = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-info')
+};
 
 exports.mysql = {
   enable: true,
   package: "egg-mysql"
-}
+};

@@ -14,7 +14,8 @@ class getInfo extends Subscription {
 
   async subscribe() {
     // 在这个方法里执行业务逻辑
-    const info = "INFO";
+    // const info = "INFO";
+    const info = this.ctx.info;
     console.log(Date.now() / 1000, info);
   }
 }

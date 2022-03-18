@@ -1,6 +1,6 @@
 // ↓ 插件可以处理业务逻辑 (与之对比，中间件更适合处理请求)
 module.exports = (options) => {
-  console.log("options", options);
+  // console.log("options", options);
   return async (ctx, next) => {
     const url = ctx.request.url;
     console.log("url", url);
