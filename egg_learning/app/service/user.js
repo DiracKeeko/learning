@@ -32,6 +32,41 @@ class UserService extends Service {
       return null;
     }
   }
+  async add(params) {
+    try {
+      const { app } = this;
+      // 插入单条数据 表结构有两列name, pwd params也必须对应{name: "xxx", pwd: "yyy"} 否则会报错
+      const res = await app.mysql.insert("user", params);
+      return res;
+    } catch (err) {
+      console.log("err->", err);
+      return null;
+    }
+  }
+  async edit(params) {
+    try {
+      const { app } = this;
+      // 修改数据
+      const res = await app.mysql.update("user", params);
+      return res;
+    } catch (err) {
+      console.log("err->", err);
+      return null;
+    }
+  }
+  async del(id) {
+    try {
+      const { app } = this;
+      // 删除数据
+      console.log("id", id);
+      const res = await app.mysql.delete("user", {id});
+      return res;
+    } catch (err) {
+      console.log("err->", err);
+      return null;
+    }
+  }
+
 }
 
 module.exports = UserService;

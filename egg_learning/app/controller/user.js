@@ -125,15 +125,16 @@ class UserController extends Controller {
   async add() {
     const { ctx } = this;
 
-    const rule = {
-      name: { type: "string" },
-      age: { type: "number" },
-    };
-    ctx.validate(rule);
+    // const rule = {
+    //   name: { type: "string" },
+    //   age: { type: "number" },
+    // };
+    // ctx.validate(rule);
 
+    const res = await ctx.service.user.add(ctx.request.body);
     ctx.body = {
       code: 0,
-      data: ctx.request.body,
+      data: res,
       msg: "",
     };
     // const res = await ctx.service.user.add(ctx.request.body);
@@ -142,9 +143,10 @@ class UserController extends Controller {
   // ↓ edit方法使用put请求，put的参数与post类似
   async edit() {
     const { ctx } = this;
+    const res = await ctx.service.user.edit(ctx.request.body);
     ctx.body = {
       code: 0,
-      data: ctx.request.body,
+      data: res,
       msg: "",
     };
   }
@@ -152,9 +154,10 @@ class UserController extends Controller {
   // ↓ delete方法使用delete请求，delete的参数与post类似
   async del() {
     const { ctx } = this;
+    const res = await ctx.service.user.del(ctx.request.body.id);
     ctx.body = {
       code: 0,
-      data: ctx.request.body,
+      data: res,
       msg: "",
     };
   }
