@@ -20,4 +20,5 @@ class getInfo extends Subscription {
   }
 }
 
-module.exports = getInfo;
+// module.exports = getInfo;
+module.exports = undefined;

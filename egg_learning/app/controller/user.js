@@ -61,14 +61,15 @@ class UserController extends Controller {
 
   async lists() {
     const { ctx, app } = this;
-    console.log("mysql->", app.mysql);
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
+    // console.log("mysql->", app.mysql);
+    // await new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //   }, 1000);
+    // });
+    const res = await ctx.service.user.lists();
 
-    ctx.body = [{ id: 123 }];
+    ctx.body = res;
   }
 
   async login() {
@@ -117,7 +118,8 @@ class UserController extends Controller {
     const { ctx } = this;
     // console.log("ctx.params->", ctx.params); // 如 {id: 200}
     // params ↓ 对应restful型路由 /user/:id  -> /user/3
-    ctx.body = ctx.params.id;
+    const res = await ctx.service.user.detail2(ctx.params.id);
+    ctx.body = res;
   }
 
   async add() {
