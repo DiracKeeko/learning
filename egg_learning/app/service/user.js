@@ -8,7 +8,14 @@ class UserService extends Service {
       const { ctx, app } = this;
       // 查询整张表 mysql.select("user"); mysql.selset("表名");
       // const res = await app.mysql.select("user"); // egg-mysql操作
-      const res = await ctx.model.User.findAll(); // egg-sequelize操作
+      // const res = await ctx.model.User.findAll(); // egg-sequelize操作
+      const res = await ctx.model.User.findAll({ 
+        // where: {
+        //   id: 7
+        // }
+        limit: 5, //每页5条
+        offset: 2 //偏移量
+      }); // egg-sequelize操作
       return res;
     } catch (err) {
       console.log("err->", err);
