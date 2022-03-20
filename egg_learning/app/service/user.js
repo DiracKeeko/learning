@@ -5,9 +5,10 @@ const Service = require('egg').Service;
 class UserService extends Service {
   async lists() {
     try {
-      const { app } = this;
+      const { ctx, app } = this;
       // 查询整张表 mysql.select("user"); mysql.selset("表名");
-      const res = await app.mysql.select("user"); 
+      // const res = await app.mysql.select("user"); // egg-mysql操作
+      const res = await ctx.model.User.findAll(); // egg-sequelize操作
       return res;
     } catch (err) {
       console.log("err->", err);
@@ -58,7 +59,6 @@ class UserService extends Service {
     try {
       const { app } = this;
       // 删除数据
-      console.log("id", id);
       const res = await app.mysql.delete("user", {id});
       return res;
     } catch (err) {
