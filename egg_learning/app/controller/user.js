@@ -67,7 +67,16 @@ class UserController extends Controller {
     //     resolve();
     //   }, 1000);
     // });
-    const res = await ctx.service.user.lists();
+
+    // const res = await ctx.service.user.lists(); // 调用service.user
+    // const res = await ctx.model.User.findAll(); // egg-sequelize操作
+    const res = await ctx.model.User.findAll({ 
+      // where: {
+      //   id: 7
+      // }
+      limit: 5, //每页5条
+      offset: 0 //偏移量
+    }); // egg-sequelize操作
 
     ctx.body = res;
   }
@@ -109,9 +118,10 @@ class UserController extends Controller {
     const { ctx } = this;
     // console.log("ctx.query->", ctx.query); // 如 {id: 100}
     // query ↓ 对应query型 /user?id=2
-    const res = await ctx.service.user.detail(10);
-    console.log(res);
-    ctx.body = ctx.query.id;
+    // const res = await ctx.service.user.detail(10);
+    const res = await ctx.model.User.findByPk(ctx.query.id);
+    console.log("res->", res);
+    ctx.body = res;
   }
 
   async detail2() {
@@ -131,7 +141,8 @@ class UserController extends Controller {
     // };
     // ctx.validate(rule);
 
-    const res = await ctx.service.user.add(ctx.request.body);
+    // const res = await ctx.service.user.add(ctx.request.body);
+    const res = await ctx.model.User.create(ctx.request.body);
     ctx.body = {
       code: 0,
       data: res,
@@ -143,7 +154,17 @@ class UserController extends Controller {
   // ↓ edit方法使用put请求，put的参数与post类似
   async edit() {
     const { ctx } = this;
-    const res = await ctx.service.user.edit(ctx.request.body);
+    // const res = await ctx.service.user.edit(ctx.request.body);
+    const user = await ctx.model.User.findByPk(ctx.request.body.id);
+    if (!user) {
+      ctx.body = {
+        code: 1,
+        msg: "err, id not found",
+      };
+      return;
+    }
+    const res = await user.update(ctx.request.body);
+    console.log("res->", res);
     ctx.body = {
       code: 0,
       data: res,
@@ -154,7 +175,16 @@ class UserController extends Controller {
   // ↓ delete方法使用delete请求，delete的参数与post类似
   async del() {
     const { ctx } = this;
-    const res = await ctx.service.user.del(ctx.request.body.id);
+    // const res = await ctx.service.user.del(ctx.request.body.id);
+    const user = await ctx.model.User.findByPk(ctx.request.body.id);
+    if (!user) {
+      ctx.body = {
+        code: 1,
+        msg: "err, id not found",
+      };
+      return;
+    }
+    const res = await user.destroy(ctx.request.body.id);
     ctx.body = {
       code: 0,
       data: res,
