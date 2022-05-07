@@ -40,3 +40,42 @@ JS是典型的弱类型语言。
 答：是强类型静态类型语言。
   强类型 - 严格声明变量类型。
   静态 - 编译阶段确定变量类型。
+
+
+### 1.5-基本类型
+
+#### 1.5.1-数据类型
+
+ES6 基本数据类型：
+
+1. String
+2. Number
+3. Boolean
+4. Null
+5. Undefined
+6. Symbol
+<!-- 新增BigInt -->
+
+ES6 引用数据类型：
+
+1. Object
+2. Array
+3. Function
+4. Date
+5. Math
+6. RegExp
+
+TS 的数据类型：
+
+1. void
+2. any
+3. never
+4. 元组
+5. 枚举
+6. 高级类型
+
+#### 1.5.2-类型注解
+
+作用：相当于强类型语言中的类型声明
+
+语法：**(variable/function): type**
