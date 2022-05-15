@@ -55,6 +55,8 @@ function hof(handler: Handler) {
 
   3.返回值类型
     - 目标函数的返回值类型必须与源函数的返回值类型相同或者为源函数的子类型
+    
+    如果有函数重载
 */
  
 // 1.参数个数
@@ -110,3 +112,101 @@ let g11 = () => ({name: 'Alice', location: 'Nanjing'});
 f11 = g11;
 // g11 = f11; // 报错
 // f11的返回值类型是g11返回值类型的子类型
+
+
+// ##函数重载的情况
+/* 
+  1.目标函数的参数要多于源函数的参数
+  2.返回值类型要符合定义的要求
+*/
+function overload(a: number, b: number): number;
+function overload(a: string, b: string): string;
+// ↑上面是定义 （目标函数）
+// ↓下面是具体实现 （源函数）
+function overload(a: any, b: any): any {};
+// function overload(a: any, b: any, c: any): any {}; //报错，参数不兼容
+// function overload(a: any, b: any) {}; // 报错，不兼容 -> 返回值类型不兼容
+
+
+// 枚举兼容性
+enum Fruit { Apple, Banana };
+enum Color { Red, Yellow };
+
+let fruit: Fruit.Apple = 3
+let num1: number = Fruit.Apple;
+// ↑ 枚举类型和数值类型可以互相兼容
+// ↓ 不同的枚举类型 不兼容
+// let color: Color.Red = Fruit.Apple; // 不兼容
+
+// 类兼容性
+class A {
+  constructor(p: number, q: number) {}
+  id: number = 1
+  // private name: string = ""
+}
+class B {
+  static s = 1
+  constructor(p: number) {}
+  id: number = 2
+}
+let aa = new A(1, 2);
+let bb = new B(1);
+aa = bb;
+bb = aa; // 兼容 -> 都具有实例属性id
+/* 
+  1.类之间的兼容性判断时，静态属性和构造函数不参与判断
+  2.如果两个类具有相同的实例成员(class的属性)，那么他们的实例(aa, bb)就可以完全兼容
+  3.如果类中有私有成员，那么两个不同的类之间不兼容 (若有私有成员，只有父类和子类可以兼容)
+*/
+
+class AA {
+  constructor(p: number, q: number) {}
+  id: number = 11
+  private name: string = ""
+}
+class BB {
+  static s = 1
+  constructor(p: number) {}
+  id: number = 22
+  private name: string = ""
+}
+let aaa = new AA(1, 2);
+let bbb = new BB(1);
+// aaa = bbb; // 不兼容
+// bbb = aaa; // 不兼容
+
+class CC extends AA {}
+let ccc = new CC(1, 2);
+aaa = ccc;
+ccc = aaa;
+
+
+// 泛型的兼容性
+interface Empty<T> {
+}
+let obj1: Empty<number> = {};
+let obj2: Empty<number> = {};
+obj1 = obj2
+// ↑ 上面的情况兼容
+
+// ↓ 下面的情况不兼容
+/* 
+  interface Empty<T> {
+    value: T // 使用了泛型T
+  }
+  let obj1: Empty<number> = {};
+  let obj2: Empty<number> = {};
+  obj1 = obj2
+*/
+// 只有类型参数T被接口成员使用的时候，才会影响泛型的兼容性
+
+let log1 = <T>(x: T): T => {
+  console.log('x');
+  return x;
+}
+let log2 = <U>(y: U): U => {
+  console.log('y');
+  return y;
+}
+log1 = log2;
+// 如果两个泛型函数的定义相同，但没有指定类型参数，它们是可以相互兼容的。
