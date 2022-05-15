@@ -50,8 +50,11 @@ function hof(handler: Handler) {
   2.参数类型
     - 参数类型必须匹配
       a.基础类型容易判断
-      b.对象类型复杂
-  3.
+      b.对象类型复杂 
+        - 成员个数多的能兼容成员个数少的（想象成参数，参数多的兼容参数少的）
+
+  3.返回值类型
+    - 目标函数的返回值类型必须与源函数的返回值类型相同或者为源函数的子类型
 */
  
 // 1.参数个数
@@ -85,3 +88,25 @@ c1 = b1
 let handler3 = (a: string) => {}
 // hof(handler3) // 报错 a和a类型不兼容
 
+interface Point3D {
+  x: number;
+  y: number;
+  z: number;
+}
+interface Point2D {
+  x: number;
+  y: number;
+}
+let p3d = (point: Point3D) => {}
+let p2d = (point: Point2D) => {}
+p3d = p2d // p3d兼容p2d
+// p2d = p3d // p2d不兼容p3d 
+// ↑ 如果strictFunctionTypes: false 可以通过编译检查
+
+
+// 3.返回值类型
+let f11 = () => ({name: 'Alice'});
+let g11 = () => ({name: 'Alice', location: 'Nanjing'});
+f11 = g11;
+// g11 = f11; // 报错
+// f11的返回值类型是g11返回值类型的子类型
