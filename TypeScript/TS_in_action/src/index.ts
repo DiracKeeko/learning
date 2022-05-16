@@ -9,7 +9,8 @@
 // import './generics' // 泛型
 // import './generics-class' 
 // import './advanced'
-import './advanced2'
+// import './advanced2'
+import './advanced3'
 
 let hello : string = "Hello TypeScript";
 document.querySelectorAll('.app')[0].innerHTML = hello;
