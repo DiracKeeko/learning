@@ -11,7 +11,8 @@
 // import './advanced'
 // import './advanced2'
 // import './advanced3'
-import './advanced4'
+// import './advanced4'
+import './advanced5'
 
 let hello : string = "Hello TypeScript";
 document.querySelectorAll('.app')[0].innerHTML = hello;
