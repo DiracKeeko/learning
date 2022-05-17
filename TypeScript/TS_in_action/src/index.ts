@@ -10,7 +10,8 @@
 // import './generics-class' 
 // import './advanced'
 // import './advanced2'
-import './advanced3'
+// import './advanced3'
+import './advanced4'
 
 let hello : string = "Hello TypeScript";
 document.querySelectorAll('.app')[0].innerHTML = hello;
