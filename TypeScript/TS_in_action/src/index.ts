@@ -16,7 +16,7 @@
 // import './advanced6'
 // import './advanced7'
 
-import './es6/c';
+// import './01module/es6/c';
 
 let hello : string = "Hello TypeScript";
 document.querySelectorAll('.app')[0].innerHTML = hello;

@@ -27,3 +27,12 @@ export default function () {
 // 引入外部模块，重新导出
 export { str as hello } from './b'
 // 将b.js文件中的str引入;起一个别名hello;导出hello;
+
+/*
+  在ESM中
+
+  export default被视为顶级导出
+  export 被视为次级导出
+
+  两种导出方式不冲突，可以同时使用
+*/
