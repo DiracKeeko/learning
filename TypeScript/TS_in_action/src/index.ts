@@ -20,3 +20,5 @@
 
 let hello : string = "Hello TypeScript";
 document.querySelectorAll('.app')[0].innerHTML = hello;
+
+// import "./04libs/index.ts";

@@ -51,7 +51,7 @@ let am: Am = {
 // ## 命名空间和函数之间的合并
 function Lib() {}
 namespace Lib {
-  export let version = "1.0";
+  export let version = "1.0"; // 相当于给函数增加了属性
 }
 console.log(Lib.version); // 正常输出 1.0
 
@@ -78,3 +78,7 @@ console.log(Colorm); // 枚举成员增加了一个mix方法 { ..., mix: functio
 // 注意：
 // 命名空间和 函数、类 进行声明合并的时候一定要放在后面
 // 命名空间和 枚举 顺序没有要求
+
+// 程序中多处重名的声明并不是好的模式
+// 多个重名的声明应该放在同一个文件中
+// TS保留这种是为了兼容旧的JS代码
