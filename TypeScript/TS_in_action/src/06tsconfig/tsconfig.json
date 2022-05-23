@@ -1,0 +1,8 @@
+{
+  // 配置可以继承
+  "extends": "./tsconfig.base",
+
+  // ↓ 配置可以覆盖
+  "exclude": [],
+  "compileOnSave": true, // 在保存时自动编译
+}
