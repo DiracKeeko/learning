@@ -1,5 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+// const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+// ↓ awesome-typescript-loader 自带类型检查插件
+const { CheckerPlugin } = require("awesome-typescript-loader");
+
+// 用类型检查插件，可以单独开启类型检查进程
+// CheckerPlugin类型检查有遗漏
+
+// 结论：综合起来，建议使用ts-loader
 
 module.exports = {
   entry: {
@@ -23,7 +31,10 @@ module.exports = {
       {
         test: /\.tsx?$/i,
         use: [{
-          loader: 'ts-loader',
+          // loader: 'ts-loader',
+          loader: 'awesome-typescript-loader', 
+          // ↑ awesome-typescript-loader 更适合结合babel使用
+
           // 传入options
           options: {
             transpileOnly: true, // 默认false, 
@@ -39,6 +50,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/tpl/index.html'
     }),
-    new ForkTsCheckerWebpackPlugin() 
+    // new ForkTsCheckerWebpackPlugin(),
+    new CheckerPlugin()
   ]
 }
