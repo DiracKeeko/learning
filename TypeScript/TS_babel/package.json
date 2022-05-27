@@ -5,7 +5,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "type-check": "tsc --watch"
+    "type-check": "tsc --watch",
+    "test": "jest"
   },
   "keywords": [
     "TypeScript",
@@ -20,6 +21,9 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^27.5.1",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
     "typescript": "^4.7.2"
   }
 }
