@@ -7,7 +7,18 @@ interface Greeting {
     lastName: string;
 }
 
-const Hello = (props: Greeting) => <Button>Hello {props.name}</Button>
+/* 
+interface Greeting {
+    name: string;
+    firstName?: string;
+    lastName?: string;
+}
+*/
+
+// const Hello = (props: Greeting) => <Button>Hello {props.name}</Button>
+
+// React.FC 是React定义的函数组件的类型
+const Hello: React.FC<Greeting> = (props) => <Button>Hello {props.name}</Button>
 
 // const Hello: React.FC<Greeting> = ({
 //     name,
@@ -16,6 +27,9 @@ const Hello = (props: Greeting) => <Button>Hello {props.name}</Button>
 //     children
 // }) => <Button>Hello {name}</Button>
 
+// 使用React.FC + 默认属性defaultProps 
+// 默认属性必须是可选属性 ?:
+// 建议使用常规定义方式,不使用React.FC
 Hello.defaultProps = {
     firstName: '',
     lastName: ''
