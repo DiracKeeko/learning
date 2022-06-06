@@ -4,7 +4,7 @@
 
   // ↓ 配置可以覆盖
   "exclude": [],
-  "compileOnSave": true, // 在保存时自动编译
+  "compileOnSave": true, // 在保存时自动编译 Atom支持, vsCode不确定是否支持
 
   // ↓ 编译相关的选项 (常用)
   "compilerOptions": {
