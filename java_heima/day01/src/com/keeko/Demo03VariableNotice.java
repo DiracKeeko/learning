@@ -1,4 +1,4 @@
-package com.keeko.demo01;
+package com.keeko;
 
 /*
 使用变量的时候，有一些注意事项：

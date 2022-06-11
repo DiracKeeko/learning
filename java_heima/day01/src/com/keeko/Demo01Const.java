@@ -1,4 +1,4 @@
-package com.keeko.demo01;
+package com.keeko;
 
 /*
 常量：在程序运行期间，固定不变的量。

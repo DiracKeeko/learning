@@ -1,4 +1,4 @@
-package com.keeko.demo01;
+package com.keeko;
 
 // 第一行的第三个单词必须和所在的文件名称完全一样，大小写也要一样
 // public class后面代表定义一个类的名称，类是Java当中所有源代码的基本组织单位。
