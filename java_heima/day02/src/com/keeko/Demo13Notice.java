@@ -25,6 +25,8 @@ public class Demo13Notice {
         short result = 5 + 8;
         System.out.println(result);
 
-        short result2 = 5 + a + 8; // 18
+        // short result2 = 5 + a + 8; // 18
+        // ↓ 想一想类型转换
+        int result2 = 5 + a + 8; // 18
     }
 }
