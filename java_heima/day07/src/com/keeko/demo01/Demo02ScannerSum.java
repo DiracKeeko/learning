@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class Demo02ScannerSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        // ↑ 导包语句可以通过先写 Scanner + enter 用IDEA的提示自动引入
         System.out.println("输入数字并回车");
         int a = sc.nextInt();
         System.out.println("再次输入数字并回车");

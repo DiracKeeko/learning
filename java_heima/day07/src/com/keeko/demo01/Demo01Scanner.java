@@ -30,7 +30,7 @@ public class Demo01Scanner {
         Scanner sc = new Scanner(System.in);
 
         // 3. 获取键盘输入的int数字
-        int num = sc.nextInt();
+        int num = sc.nextInt(); // 这里如果输入非数字并enter，会报错退出
         System.out.println("输入的int数字是：" + num);
 
         // 4. 获取键盘输入的字符串
