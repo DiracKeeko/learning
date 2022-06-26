@@ -10,6 +10,7 @@ public class Demo04ArrayListEach {
         list.add("c");
 
         // 遍历集合
+        // list.fori enter enter 自动生成
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
