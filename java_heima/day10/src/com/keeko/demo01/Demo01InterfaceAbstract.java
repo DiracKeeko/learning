@@ -35,7 +35,7 @@ public class 实现类名称 implements 接口名称 {
 注意事项：
 如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类。
  */
-public class Demo01Interface {
+public class Demo01InterfaceAbstract {
 
     public static void main(String[] args) {
         // 错误写法！不能直接new接口对象使用。

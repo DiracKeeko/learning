@@ -6,7 +6,7 @@ package com.keeko.demo01;
 格式：
     接口名称.静态方法名(参数);
  */
-public class Demo03Interface {
+public class Demo03InterfaceStatic {
 
     public static void main(String[] args) {
         // 创建了实现类对象 (没有必要, 在这里类也没有必要创建)
