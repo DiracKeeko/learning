@@ -1,6 +1,6 @@
 package com.keeko.demo01;
 
-public class Demo04Interface {
+public class Demo04InterfacePrivate {
 
     public static void main(String[] args) {
         MyInterfacePrivateStaticB.methodStatic1();
