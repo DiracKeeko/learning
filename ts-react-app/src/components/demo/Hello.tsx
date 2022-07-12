@@ -15,6 +15,7 @@ interface Greeting {
 }
 */
 
+// ↓ 常规定义方式
 // const Hello = (props: Greeting) => <Button>Hello {props.name}</Button>
 
 // React.FC 是React定义的函数组件的类型
