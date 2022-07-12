@@ -7,6 +7,8 @@ package com.keeko.demo03;
 
 注意事项：
 1. 多个父接口当中的抽象方法如果重复，没关系。
+2. 多个父接口当中的默认方法如果重复，那么子接口必须进行默认方法的覆盖重写，
+      【而且需要带着default关键字，->默认方法覆盖默认方法】 
  */
 public class Demo01Relations {
 }
