@@ -2,8 +2,8 @@ package com.keeko.demo02;
 
 public class MyClass {
 
-    // public int num = 10; // public
-    protected int num = 10; // protected
+    public int num = 10; // public
+    // protected int num = 10; // protected
     // int num = 10; // default
     // private int num = 10;
     // ↑ 同一个类中 被private修饰符 修饰的变量 可以被同类中的其他方法访问
