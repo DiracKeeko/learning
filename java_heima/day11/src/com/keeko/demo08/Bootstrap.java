@@ -1,5 +1,6 @@
 package com.keeko.demo08;
 
+import com.keeko.redPacket.OpenMode;
 import com.keeko.redPacket.RedPacketFrame;
 
 /*
@@ -20,5 +21,16 @@ import com.keeko.redPacket.RedPacketFrame;
 public class Bootstrap {
     public static void main(String[] args) {
         MyRed red = new MyRed("test");
+
+        red.setOwnerName("Keeko");
+
+        // 普通红包
+        // OpenMode normal = new NormalMode();
+        // red.setOpenWay(normal);
+
+        // 手气红包
+        OpenMode random = new RandomMode();
+        red.setOpenWay(random);
+
     }
 }
