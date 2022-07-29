@@ -42,7 +42,7 @@ public class Person {
             Object obj = p2 = new Person("古力娜扎",19);
             解决:可以使用向下转型(强转)把obj类型转换为Person
      */
-    @Override
+    /*@Override
     public boolean equals(Object obj) {
         //增加一个判断,传递的参数obj如果是this本身,直接返回true,提高程序的效率
         if(obj==this){
@@ -63,8 +63,23 @@ public class Person {
         }
         //不是Person类型直接返回false
         return false;
+    }*/
+
+    // ↓ alt + insert 选择equal() and hasCode() 再enter
+    // 选择java 7 enter 自动生成 equal()
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &&
+                Objects.equals(name, person.name);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
 
     public String getName() {
         return name;
